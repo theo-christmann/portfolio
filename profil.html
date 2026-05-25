@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil - Théo Christmann</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="glow-bg"></div>
+    <div id="cursor-glow"></div>
+
+    <nav>
+      <a href="index.html">Retour à l'accueil</a>
+    </nav>
+
+    <div class="article-container">
+      <a href="index.html" class="btn-back reveal active">
+        <i class="fas fa-arrow-left"></i> Retour au portfolio
+      </a>
+
+      <img
+        src="./assets/img/cible.jpg"
+        alt="Théo Christmann"
+        class="article-hero-img reveal active"
+      />
+
+      <div class="glass-card article-content-card reveal active">
+        <h1><span class="gradient-text">Un profil atypique</span></h1>
+
+        <p>
+          Je suis actuellement en première année de BUT GEA à l'IUT de Sceaux
+          (Paris-Saclay). Cette formation me donne des bases solides en
+          management, ressources humaines, comptabilité et contrôle de gestion.
+          Avec ces disciplines que j'aborde en cours, j'essaie de les connecter
+          à des situations concrètes.
+        </p>
+
+        <p>
+          Mon profil est un peu particulier : j'ai encadré des groupes d'enfants
+          en tant qu'animateur certifié BAFA pendant deux étés de suite, ce qui
+          m'a appris à gérer des imprévus, à travailler en équipe sous pression
+          et à structurer un planning sur une journée entière. Ce n'est pas la
+          même chose que gérer un projet en entreprise, mais les réflexes acquis
+          comme anticiper, communiquer, s'adapter se transfèrent.
+        </p>
+
+        <p>
+          En parallèle, je suis passionné par les nouvelles technologies et
+          l'intelligence artificielle. Je ne me contente pas de suivre
+          l'actualité : je teste, j'expérimente, et j'applique ce que j'apprends
+          à des cas concrets. Lors de mon stage à l'ISTA, j'ai rédigé un prompt
+          structuré pour automatiser une veille concurrentielle, et j'ai aidé le
+          service RH à réduire le temps passé sur certaines tâches répétitives
+          grâce à des outils IA.
+        </p>
+
+        <p>
+          Je joue au handball en club au PUC et je m'entraîne régulièrement en
+          musculation. Le sport m'a appris une chose que les cours ne m'auraient
+          pas forcément enseignée : la constance. Progresser demande de revenir
+          s'entraîner même quand ce n'est pas le bon jour. C'est une mentalité
+          que j'essaie d'appliquer ailleurs.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Théo Christmann – Portfolio.</p>
+    </footer>
+
+    <script>
+      const glow = document.getElementById("cursor-glow");
+
+      document.addEventListener("mousemove", (e) => {
+        requestAnimationFrame(() => {
+          glow.style.left = e.clientX + "px";
+          glow.style.top = e.clientY + "px";
+        });
+      });
+
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 50;
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+
+      window.addEventListener("scroll", reveal);
+      reveal();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech & IA - Théo Christmann</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="glow-bg"></div>
+    <div id="cursor-glow"></div>
+
+    <nav>
+      <a href="index.html">Retour à l'accueil</a>
+    </nav>
+
+    <div class="article-container">
+      <a href="index.html" class="btn-back reveal active">
+        <i class="fas fa-arrow-left"></i> Retour au portfolio
+      </a>
+
+      <img
+        src="./assets/img/ia.jpg"
+        alt="Compétences Tech et IA"
+        class="article-hero-img reveal active"
+      />
+
+      <div class="glass-card article-content-card reveal active">
+        <h1><span class="gradient-text">L'IA au service du concret</span></h1>
+
+        <p>
+          Je m'intéresse aux nouvelles technologies depuis plusieurs années,
+          mais ce qui a changé récemment, c'est que j'ai commencé à les utiliser
+          dans des contextes professionnels réels.
+        </p>
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-robot" style="margin-right: 10px"></i> Prompt
+          Engineering
+        </h3>
+        <p>
+          Lors de mon stage à l'ISTA, j'ai rédigé un prompt structuré destiné à
+          automatiser une veille concurrentielle. L'objectif était simple :
+          gagner du temps sur une tâche récurrente en la confiant à un outil IA
+          correctement guidé.
+        </p>
+        <p>
+          J'ai aussi travaillé avec le service RH pour alléger certaines tâches
+          répétitives grâce à des prompts adaptés. Voir que ça fonctionnait
+          concrètement, que quelques lignes bien rédigées pouvaient faire gagner
+          des heures, m'a donné envie d'aller plus loin sur ce sujet.
+        </p>
+
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.1);
+            margin: 30px 0;
+          "
+        />
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-laptop-code" style="margin-right: 10px"></i> Outils
+          Numériques
+        </h3>
+        <p>
+          <strong>Canva :</strong> Je l'utilise régulièrement pour produire des
+          documents propres rapidement : CV, présentations, supports visuels.
+          J'ai refait mon CV entièrement sur Canva pour le rendre lisible et
+          cohérent visuellement.
+        </p>
+        <p>
+          <strong>Pack Office :</strong> Utilisation courante d'Excel et Word
+          dans le cadre de mes études et expériences.
+        </p>
+
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.1);
+            margin: 30px 0;
+          "
+        />
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-satellite-dish" style="margin-right: 10px"></i>
+          Veille Technologique Active
+        </h3>
+        <p>
+          Pour ma veille, je m'appuie sur plusieurs sources : des articles
+          spécialisés, des newsletters tech, et YouTube, que j'utilise
+          activement pour apprendre et suivre les évolutions de l'IA et des
+          outils numériques. Je cherche à comprendre les usages professionnels
+          derrière les tendances, pas juste à les connaître de nom.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Théo Christmann – Portfolio.</p>
+    </footer>
+
+    <script>
+      const glow = document.getElementById("cursor-glow");
+
+      document.addEventListener("mousemove", (e) => {
+        requestAnimationFrame(() => {
+          glow.style.left = e.clientX + "px";
+          glow.style.top = e.clientY + "px";
+        });
+      });
+
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 50;
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+
+      window.addEventListener("scroll", reveal);
+      reveal();
+    </script>
+  </body>
+</html>

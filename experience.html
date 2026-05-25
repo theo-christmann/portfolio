@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expériences - Théo Christmann</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="glow-bg"></div>
+    <div id="cursor-glow"></div>
+
+    <nav>
+      <a href="index.html">Retour à l'accueil</a>
+    </nav>
+
+    <div class="article-container">
+      <a href="index.html" class="btn-back reveal active">
+        <i class="fas fa-arrow-left"></i> Retour au portfolio
+      </a>
+
+      <img
+        src="./assets/img/centre_aere.jpeg"
+        alt="Mes expériences professionnelles"
+        class="article-hero-img reveal active"
+      />
+
+      <div class="glass-card article-content-card reveal active">
+        <h1>
+          <span class="gradient-text">Gérer l'imprévu et le collectif</span>
+        </h1>
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-campground" style="margin-right: 10px"></i> Animateur
+          Certifié BAFA - Centre "Les P'tits Génies"
+        </h3>
+        <p
+          style="font-weight: 600; color: var(--text-main); margin-bottom: 15px"
+        >
+          Étés 2024 & 2025
+        </p>
+        <p>
+          J'ai travaillé dans un centre de loisirs accueillant environ 60
+          enfants âgés de 3 à 10 ans, répartis entre 8 animateurs. Concrètement,
+          cela signifiait gérer des groupes d'une dizaine de jeunes en
+          permanence, avec des tranches d'âge très différentes et des dynamiques
+          de groupe à lire rapidement. Ce qui n'est pas la même chose à 4 ans
+          qu'à 10 ans.
+        </p>
+
+        <p>
+          Parmi les activités que j'ai organisées ou co-organisées : des
+          olympiades sur une journée entière (coordination des épreuves, gestion
+          du matériel, arbitrage), des ateliers peinture, une boum organisée en
+          équipe, et un projet plus long que j'ai particulièrement apprécié : la
+          création d'un mini livre de contes avec les enfants. Chaque groupe
+          inventait une histoire avec une morale finale. Cela demandait d'animer
+          des séances d'écriture, de guider sans imposer, et de valoriser ce que
+          chaque enfant apportait.
+        </p>
+
+        <p>
+          Les veillées étaient organisées en équipe : on se répartissait les
+          rôles en amont, on anticipait les besoins logistiques, et on
+          s'adaptait en temps réel si quelque chose ne se passait pas comme
+          prévu. C'est là que j'ai compris ce que "travailler en équipe" veut
+          vraiment dire. Pas juste se répartir des tâches, mais se faire
+          confiance et ajuster ensemble.
+        </p>
+
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.1);
+            margin: 40px 0;
+          "
+        />
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-users" style="margin-right: 10px"></i> Stagiaire
+          Animation (BAFA) - Centre "Les P'tits Génies"
+        </h3>
+        <p
+          style="font-weight: 600; color: var(--text-main); margin-bottom: 15px"
+        >
+          Février 2024
+        </p>
+        <p>
+          Premier contact avec le terrain de l'animation professionnelle. J'ai
+          intégré une équipe déjà en place et appris les techniques
+          d'encadrement en observant, puis en participant progressivement. Ce
+          stage de formation était une étape obligatoire avant l'obtention du
+          BAFA. J'en suis ressorti avec une idée claire de ce que le métier
+          d'animateur demande réellement.
+        </p>
+
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.1);
+            margin: 40px 0;
+          "
+        />
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-book-reader" style="margin-right: 10px"></i>
+          Stagiaire Observation - Médiathèque JP Melville
+        </h3>
+        <p
+          style="font-weight: 600; color: var(--text-main); margin-bottom: 15px"
+        >
+          Décembre 2021
+        </p>
+        <p>
+          Immersion dans un établissement public. J'ai observé le fonctionnement
+          d'une structure culturelle ouverte au public : accueil des usagers,
+          organisation des espaces, gestion du fonds documentaire. Une première
+          expérience qui m'a sensibilisé au service public et à la relation avec
+          les usagers.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Théo Christmann – Portfolio.</p>
+    </footer>
+
+    <script>
+      const glow = document.getElementById("cursor-glow");
+
+      document.addEventListener("mousemove", (e) => {
+        requestAnimationFrame(() => {
+          glow.style.left = e.clientX + "px";
+          glow.style.top = e.clientY + "px";
+        });
+      });
+
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 50;
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+
+      window.addEventListener("scroll", reveal);
+      reveal();
+    </script>
+  </body>
+</html>

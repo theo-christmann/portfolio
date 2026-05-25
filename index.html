@@ -1,733 +1,435 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Théo Christmann | Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        /* --- VARIABLES & RESET --- */
-        :root {
-            --bg-main: #f0f4f8;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --accent-cyan: #0284c7;
-            --accent-purple: #7c3aed;
-            --glass-bg: rgba(255, 255, 255, 0.65);
-            --glass-border: rgba(255, 255, 255, 1);
-            --glass-hover: rgba(255, 255, 255, 0.9);
-            --shadow-light: rgba(15, 23, 42, 0.06);
-            --shadow-strong: rgba(15, 23, 42, 0.12);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- EFFET BACKGROUND GLOW (Curseur) --- */
-        .glow-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.05), transparent 60%),
-                        radial-gradient(circle at 80% 20%, rgba(2, 132, 199, 0.05), transparent 50%);
-        }
-
-        #cursor-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            transition: opacity 0.3s;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            padding: 10px 30px;
-            border-radius: 50px;
-            z-index: 100;
-            display: flex;
-            gap: 20px;
-            box-shadow: 0 4px 20px var(--shadow-light);
-        }
-
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 700;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        nav a:hover {
-            color: var(--accent-cyan);
-        }
-
-        /* --- CONTENEUR PRINCIPAL --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 20px 60px;
-        }
-
-        /* --- TYPOGRAPHIE & UTILITAIRES --- */
-        .gradient-text {
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
-            background-clip: initial;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            font-weight: 800;
-        }
-
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 32px var(--shadow-light);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            background: var(--glass-hover);
-            box-shadow: 0 15px 40px var(--shadow-strong);
-            border-color: rgba(255, 255, 255, 1);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
-            padding: 80px 20px;
-            border-radius: 30px;
-            background-color: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 10px 40px var(--shadow-light);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg stroke='%230284c7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none' opacity='0.06'%3E%3C!-- Valise (Management) --%3E%3Crect x='30' y='40' width='40' height='28' rx='4' /%3E%3Cpath d='M45 40 V32 A4 4 0 0 1 55 32 V40' /%3E%3Cpath d='M30 54 H70' /%3E%3C!-- Graphique (Finance) --%3E%3Cline x1='140' y1='80' x2='200' y2='80' /%3E%3Crect x='145' y='55' width='10' height='25' /%3E%3Crect x='165' y='40' width='10' height='40' /%3E%3Crect x='185' y='20' width='10' height='60' /%3E%3C!-- Cible (Marketing) --%3E%3Ccircle cx='190' cy='180' r='20' /%3E%3Ccircle cx='190' cy='180' r='10' /%3E%3Ccircle cx='190' cy='180' r='2' fill='%230284c7' /%3E%3Cpath d='M205 165 L220 150 M220 150 H210 M220 150 V160' /%3E%3C!-- Camembert (Gestion) --%3E%3Ccircle cx='50' cy='170' r='20' /%3E%3Cpath d='M50 170 L50 150 A20 20 0 0 1 70 170 Z' fill='%230284c7' opacity='0.3' /%3E%3C!-- Organigramme (RH) --%3E%3Ccircle cx='120' cy='120' r='6' /%3E%3Ccircle cx='100' cy='140' r='6' /%3E%3Ccircle cx='140' cy='140' r='6' /%3E%3Cpath d='M120 126 V132 H100 V134 M120 132 H140 V134' /%3E%3C/g%3E%3C/svg%3E");
-            background-size: 240px;
-            background-repeat: repeat;
-        }
-
-        .hero-badge {
-            background: rgba(2, 132, 199, 0.1);
-            border: 1px solid rgba(2, 132, 199, 0.3);
-            color: var(--accent-cyan);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 0 15px rgba(2, 132, 199, 0.15);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 10px rgba(2, 132, 199, 0.1); }
-            50% { box-shadow: 0 0 20px rgba(2, 132, 199, 0.25); }
-            100% { box-shadow: 0 0 10px rgba(2, 132, 199, 0.1); }
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-
-        /* --- BENTO GRID (A Propos & Compétences) --- */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: minmax(200px, auto);
-            gap: 20px;
-            margin-bottom: 80px;
-        }
-
-        .bento-item {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* Tailles et fonds spécifiques dans la grille */
-        .bento-intro { 
-            grid-column: span 2; 
-            grid-row: span 2; 
-            padding: 0; 
-            background: rgba(255, 255, 255, 0.85); 
-        }
-        .bento-tech { 
-            grid-column: span 1; 
-            grid-row: span 1; 
-            background-color: rgba(255, 255, 255, 0.6);
-            background-image:
-                linear-gradient(135deg, rgba(124, 58, 237, 0.08), transparent),
-                radial-gradient(rgba(124, 58, 237, 0.15) 1px, transparent 1px);
-            background-size: 100% 100%, 20px 20px;
-        }
-        .bento-soft { 
-            grid-column: span 1; 
-            grid-row: span 2; 
-            background-color: rgba(255, 255, 255, 0.7);
-            background-image:
-                repeating-linear-gradient(45deg, rgba(2, 132, 199, 0.03) 0, rgba(2, 132, 199, 0.03) 2px, transparent 2px, transparent 12px),
-                linear-gradient(to bottom right, transparent, rgba(2, 132, 199, 0.08));
-        }
-        .bento-lang { 
-            grid-column: span 1; 
-            grid-row: span 1; 
-            background-color: rgba(255, 255, 255, 0.8);
-            background-image:
-                radial-gradient(circle at top left, rgba(244, 63, 94, 0.12), transparent 70%),
-                radial-gradient(circle at bottom right, rgba(251, 146, 60, 0.08), transparent 70%);
-        }
-        
-        .bento-intro-layout {
-            display: flex;
-            height: 100%;
-            align-items: stretch;
-        }
-
-        .profile-img-wrapper {
-            flex: 0 0 240px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 0;
-            border: none;
-            box-shadow: none;
-            transform: scale(1);
-            transition: transform 0.5s ease;
-        }
-
-        .bento-intro:hover .profile-img {
-            transform: scale(1.05);
-        }
-
-        .bento-intro-text {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .bento-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
-            background-clip: initial;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .bento-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .bento-item p, .bento-item li {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .soft-skills-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .soft-skills-list li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .soft-skills-list i {
-            color: var(--accent-cyan);
-            font-size: 0.8rem;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .tech-tag {
-            background: rgba(2, 132, 199, 0.08);
-            border: 1px solid rgba(2, 132, 199, 0.2);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-        }
-
-        /* --- TIMELINE (Expériences & Formation) --- */
-        .timeline-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .timeline-container {
-            position: relative;
-            padding-left: 30px;
-            border-left: 2px solid rgba(2, 132, 199, 0.2);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -37px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent-purple);
-            box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
-        }
-
-        .bento-img-card {
-            padding: 0;
-        }
-        .bento-img-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .bento-img-card:hover img {
-            transform: scale(1.08);
-        }
-        .bento-text-1 {
-            grid-column: span 2;
-            grid-row: span 1;
-            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(255, 255, 255, 0.9));
-        }
-        .bento-img-large { 
-            grid-column: span 2; 
-            grid-row: span 1; 
-        }
-
-        .timeline-date {
-            color: var(--accent-cyan);
-            font-size: 0.9rem;
-            font-weight: 800;
-            margin-bottom: 5px;
-        }
-
-        .timeline-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            font-weight: 800;
-        }
-
-        .timeline-item h5 {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        /* --- CONTACT --- */
-        .contact-cta {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(124, 58, 237, 0.05));
-            border: 1px solid rgba(124, 58, 237, 0.2);
-        }
-
-        .btn-contact {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 40px;
-            background: var(--text-main);
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 8px 20px var(--shadow-strong);
-        }
-
-        .btn-contact:hover {
-            transform: scale(1.05);
-            background: var(--accent-cyan);
-            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.3);
-        }
-
-        .btn-linkedin {
-            background: #0077b5;
-        }
-
-        .btn-linkedin:hover {
-            background: #005885;
-            box-shadow: 0 10px 25px rgba(0, 119, 181, 0.4);
-        }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-        
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 40px;
-            border-top: 1px solid rgba(15, 23, 42, 0.05);
-        }
-
-        /* --- ANIMATIONS AU SCROLL --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .timeline-section {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .bento-intro-layout {
-                flex-direction: column;
-            }
-            
-            .profile-img-wrapper {
-                width: 100%;
-                height: 300px;
-                flex: none;
-            }
-
-            .bento-intro-text {
-                padding: 25px;
-            }
-
-            .bento-grid {
-                grid-template-columns: 1fr;
-            }
-            .bento-intro, .bento-tech, .bento-soft, .bento-lang, .bento-text-1, .bento-img-large {
-                grid-column: span 1;
-                grid-row: auto;
-            }
-            nav {
-                width: 90%;
-                justify-content: space-around;
-                padding: 10px;
-            }
-            nav a { font-size: 0.8rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Effet de lueur -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
     <div class="glow-bg"></div>
     <div id="cursor-glow"></div>
 
     <nav>
-        <a href="#profil">Profil</a>
-        <a href="#parcours">Parcours</a>
-        <a href="#contact">Contact</a>
+      <a href="#profil">Profil</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#articles">Articles</a>
+      <a href="#contact">Contact</a>
     </nav>
 
     <div class="container">
-        <!-- HERO -->
-        <header class="hero reveal active" id="profil">
-            <div class="hero-badge">
-                <i class="fas fa-satellite-dish"></i> Recherche de stage : 11 Mai – 11 Juin
+      <header class="hero reveal active" id="profil">
+        <div class="hero-badge">
+          <i class="fas fa-satellite-dish"></i> Recherche de stage : 11 Mai – 11
+          Juin
+        </div>
+        <h1>Théo <br /><span class="gradient-text">Christmann</span></h1>
+        <p>
+          Étudiant en <strong>BUT GEA</strong>. À l'intersection du
+          <strong>Management</strong>, des
+          <strong>Ressources Humaines</strong> et de
+          <strong>la finance</strong>.
+        </p>
+      </header>
+
+      <section class="bento-grid">
+        <div class="glass-card bento-item bento-intro reveal">
+          <div class="bento-intro-layout">
+            <div class="profile-img-wrapper">
+              <img
+                src="./assets/img/profile.png"
+                alt="Théo Christmann"
+                class="profile-img"
+              />
             </div>
-            <h1>Théo <br><span class="gradient-text">Christmann</span></h1>
-            <p>Étudiant en <strong>BUT GEA</strong>. À l'intersection du <strong>Management</strong>, des <strong>Ressources Humaines</strong> et de <strong>la finance</strong>.</p>
-        </header>
+            <div class="bento-intro-text">
+              <i
+                class="fas fa-quote-left bento-icon"
+                style="font-size: 1.5rem; opacity: 0.3; margin-bottom: 10px"
+              ></i>
+              <h3>Curieux, impliqué et innovant.</h3>
+              <p>
+                Actuellement en première année de BUT Gestion des Entreprises et
+                des Administrations à l'IUT de Sceaux (Paris-Saclay). Je me
+                forme aux bases essentielles du management : RH, comptabilité,
+                contrôle de gestion et marketing.
+              </p>
+              <br />
+              <p>
+                Mon profil est hybride : je tire ma rigueur et mon leadership de
+                mes expériences dans l'animation, tout en nourrissant une veille
+                active et passionnée pour les nouvelles technologies.
+              </p>
+            </div>
+          </div>
+        </div>
 
-        <!-- BENTO GRID -->
-        <section class="bento-grid">
-            
-            <!-- Carte Intro -->
-            <div class="glass-card bento-item bento-intro reveal">
-                <div class="bento-intro-layout">
-                    <div class="profile-img-wrapper">
-                        <img src="./profile.png" alt="Théo Christmann" class="profile-img">
-                    </div>
-                    <div class="bento-intro-text">
-                        <i class="fas fa-quote-left bento-icon" style="font-size: 1.5rem; opacity: 0.3; margin-bottom: 10px;"></i>
-                        <h3>Curieux, impliqué et innovant.</h3>
-                        <p>Actuellement en première année de BUT Gestion des Entreprises et des Administrations à l'IUT de Sceaux (Paris-Saclay). Je me forme aux bases essentielles du management : RH, comptabilité, contrôle de gestion et marketing.</p>
-                        <br>
-                        <p>Mon profil est hybride : je tire ma rigueur et mon leadership de mes expériences dans l'animation, tout en nourrissant une veille active et passionnée pour les nouvelles technologies.</p>
-                    </div>
-                </div>
+        <div class="glass-card bento-item bento-soft reveal">
+          <h3><span class="gradient-text">Soft Skills</span></h3>
+          <p style="margin-bottom: 15px">Forgées sur le terrain</p>
+          <ul class="soft-skills-list">
+            <li><i class="fas fa-play"></i> Esprit d'équipe</li>
+            <li><i class="fas fa-play"></i> Rigueur & Discipline</li>
+            <li><i class="fas fa-play"></i> Gestion de projet</li>
+            <li><i class="fas fa-play"></i> Organisation & Logistique</li>
+            <li><i class="fas fa-play"></i> Aisance relationnelle</li>
+          </ul>
+        </div>
+
+        <div class="glass-card bento-item bento-tech reveal">
+          <i class="fas fa-microchip bento-icon"></i>
+          <h3>Tech & IA</h3>
+          <p>Automatisation et nouvelles technologies.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Prompt Engineering</span>
+            <span class="tech-tag">Pack Office</span>
+            <span class="tech-tag">Canva</span>
+            <span class="tech-tag">Veille Tech</span>
+          </div>
+        </div>
+
+        <div class="glass-card bento-item bento-lang reveal">
+          <i
+            class="fas fa-running bento-icon"
+            style="
+              background: linear-gradient(45deg, #f43f5e, #fb923c);
+              background-clip: initial;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            "
+          ></i>
+          <h3>Passions</h3>
+          <p><strong>Sport :</strong> Handball (PUC), musculation.</p>
+          <p style="margin-top: 10px">
+            <strong>Culture :</strong> Passionné par le Japon.
+          </p>
+        </div>
+
+        <div class="glass-card bento-item bento-text-1 reveal">
+          <h3
+            style="
+              color: var(--accent-cyan);
+              font-size: 1.4rem;
+              margin-bottom: 10px;
+            "
+          >
+            <i class="fas fa-bullseye"></i> Objectif & Vision
+          </h3>
+          <p>
+            Au-delà de la théorie, mon année d'expérience en gestion de groupes
+            m'a appris l'importance de l'<strong>adaptabilité</strong>, de la
+            <strong>rigueur logistique</strong> et de la
+            <strong>communication</strong>. Je recherche un environnement
+            stimulant pour mettre cette énergie au service de projets concrets.
+          </p>
+        </div>
+
+        <div
+          class="glass-card bento-item bento-img-card bento-img-large reveal"
+        >
+          <img
+            src="./assets/img/cible.jpg"
+            alt="Travail en équipe et projets"
+          />
+        </div>
+      </section>
+
+      <h2 class="section-title reveal" id="parcours">
+        <span class="gradient-text">Mon Parcours</span>
+      </h2>
+
+      <section class="timeline-section">
+        <div class="glass-card reveal">
+          <h3
+            style="
+              margin-bottom: 30px;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+            <i class="fas fa-briefcase" style="color: var(--accent-cyan)"></i>
+            Expériences Pro
+          </h3>
+          <div class="timeline-container">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">Juil. 2024 – Août 2025</div>
+              <h4>Animateur Certifié BAFA</h4>
+              <h5>Centre "Les P'tits Génies"</h5>
+              <p class="text-muted" style="font-size: 0.9rem">
+                <strong>Missions managériales :</strong> Conception et
+                organisation d'activités, gestion de veillées, collaboration en
+                équipe.
+              </p>
             </div>
 
-            <!-- Carte Soft Skills -->
-            <div class="glass-card bento-item bento-soft reveal">
-                <h3><span class="gradient-text">Soft Skills</span></h3>
-                <p style="margin-bottom: 15px;">Forgées sur le terrain</p>
-                <ul class="soft-skills-list">
-                    <li><i class="fas fa-play"></i> Esprit d'équipe</li>
-                    <li><i class="fas fa-play"></i> Rigueur & Discipline</li>
-                    <li><i class="fas fa-play"></i> Gestion de projet</li>
-                    <li><i class="fas fa-play"></i> Organisation & Logistique</li>
-                    <li><i class="fas fa-play"></i> Aisance relationnelle</li>
-                </ul>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">Février 2024</div>
+              <h4>Stagiaire Animation (BAFA)</h4>
+              <h5>Centre "Les P'tits Génies"</h5>
+              <p class="text-muted" style="font-size: 0.9rem">
+                Intégration et apprentissage des techniques d'animation en
+                équipe professionnelle.
+              </p>
             </div>
 
-            <!-- Carte Tech & IA -->
-            <div class="glass-card bento-item bento-tech reveal">
-                <i class="fas fa-microchip bento-icon"></i>
-                <h3>Tech & IA</h3>
-                <p>Automatisation et nouvelles technologies.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Prompt Engineering</span>
-                    <span class="tech-tag">Pack Office</span>
-                    <span class="tech-tag">Canva</span>
-                    <span class="tech-tag">Veille Tech</span>
-                </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">Décembre 2021</div>
+              <h4>Stagiaire (Observation)</h4>
+              <h5>Médiathèque JP Melville</h5>
+              <p class="text-muted" style="font-size: 0.9rem">
+                Immersion en établissement public, accueil et rangement.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card reveal">
+          <h3
+            style="
+              margin-bottom: 30px;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+            <i
+              class="fas fa-graduation-cap"
+              style="color: var(--accent-purple)"
+            ></i>
+            Formation
+          </h3>
+          <div class="timeline-container">
+            <div class="timeline-item">
+              <div
+                class="timeline-dot"
+                style="
+                  background: var(--accent-cyan);
+                  box-shadow: 0 0 10px var(--accent-cyan);
+                "
+              ></div>
+              <div class="timeline-date">2025 – 2026</div>
+              <h4>BUT GEA</h4>
+              <h5>IUT de Sceaux – Paris-Saclay</h5>
+              <p class="text-muted" style="font-size: 0.9rem">
+                Bases du management, RH, comptabilité, finance, fiscalité.
+              </p>
             </div>
 
-            <!-- Carte Intérêts / Langues -->
-            <div class="glass-card bento-item bento-lang reveal">
-                <i class="fas fa-running bento-icon" style="background: linear-gradient(45deg, #f43f5e, #fb923c); background-clip: initial; -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
-                <h3>Passions</h3>
-                <p><strong>Sport :</strong> Handball (PUC), musculation.</p>
-                <p style="margin-top: 10px;"><strong>Culture :</strong> Passionné par le Japon.</p>
+            <div class="timeline-item">
+              <div
+                class="timeline-dot"
+                style="
+                  background: var(--accent-cyan);
+                  box-shadow: 0 0 10px var(--accent-cyan);
+                "
+              ></div>
+              <div class="timeline-date">Avril 2025</div>
+              <h4>Obtention du BAFA</h4>
+              <p class="text-muted" style="font-size: 0.9rem">
+                Spécialisation : Grands jeux et journées à thème.
+              </p>
             </div>
 
-            <div class="glass-card bento-item bento-text-1 reveal">
-                <h3 style="color: var(--accent-cyan); font-size: 1.4rem; margin-bottom: 10px;"><i class="fas fa-bullseye"></i> Objectif & Vision</h3>
-                <p>Au-delà de la théorie, mon année d'expérience en gestion de groupes m'a appris l'importance de l'<strong>adaptabilité</strong>, de la <strong>rigueur logistique</strong> et de la <strong>communication</strong>. Je recherche un environnement stimulant pour mettre cette énergie au service de projets concrets.</p>
+            <div class="timeline-item">
+              <div
+                class="timeline-dot"
+                style="
+                  background: var(--accent-cyan);
+                  box-shadow: 0 0 10px var(--accent-cyan);
+                "
+              ></div>
+              <div class="timeline-date">2024 – 2025</div>
+              <h4>Baccalauréat STMG</h4>
+              <h5>Lycée Rodin – Paris 13e</h5>
+              <p class="text-muted" style="font-size: 0.9rem">
+                Spécialité Gestion Finance. <strong>Mention Bien</strong>.
+              </p>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="glass-card bento-item bento-img-card bento-img-large reveal">
-                <img src="./cible.jpg" alt="Travail en équipe et projets">
-            </div>
+      <h2 class="section-title reveal" id="articles">
+        <span class="gradient-text">Mes Articles</span>
+      </h2>
 
-        </section>
-
-        <!-- TIMELINE EXPERIENCES & FORMATION -->
-        <h2 class="section-title reveal" id="parcours"><span class="gradient-text">Mon Parcours</span></h2>
-        
-        <section class="timeline-section">
-            <div class="glass-card reveal">
-                <h3 style="margin-bottom: 30px; display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-briefcase" style="color: var(--accent-cyan);"></i> Expériences Pro
-                </h3>
-                <div class="timeline-container">
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">Juil. 2024 – Août 2025</div>
-                        <h4>Animateur Certifié BAFA</h4>
-                        <h5>Centre "Les P'tits Génies"</h5>
-                        <p class="text-muted" style="font-size: 0.9rem;">
-                            <strong>Missions managériales :</strong> Conception et organisation d'activités, gestion de veillées, collaboration en équipe.
-                        </p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">Février 2024</div>
-                        <h4>Stagiaire Animation (BAFA)</h4>
-                        <h5>Centre "Les P'tits Génies"</h5>
-                        <p class="text-muted" style="font-size: 0.9rem;">
-                            Intégration et apprentissage des techniques d'animation en équipe professionnelle.
-                        </p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">Décembre 2021</div>
-                        <h4>Stagiaire (Observation)</h4>
-                        <h5>Médiathèque JP Melville</h5>
-                        <p class="text-muted" style="font-size: 0.9rem;">
-                            Immersion en établissement public, accueil et rangement.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="glass-card reveal">
-                <h3 style="margin-bottom: 30px; display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-graduation-cap" style="color: var(--accent-purple);"></i> Formation
-                </h3>
-                <div class="timeline-container">
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot" style="background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
-                        <div class="timeline-date">2025 – 2026</div>
-                        <h4>BUT GEA</h4>
-                        <h5>IUT de Sceaux – Paris-Saclay</h5>
-                        <p class="text-muted" style="font-size: 0.9rem;">
-                            Bases du management, RH, comptabilité, finance, fiscalité.
-                        </p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot" style="background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
-                        <div class="timeline-date">Avril 2025</div>
-                        <h4>Obtention du BAFA</h4>
-                        <p class="text-muted" style="font-size: 0.9rem;">
-                            Spécialisation : Grands jeux et journées à thème.
-                        </p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot" style="background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
-                        <div class="timeline-date">2024 – 2025</div>
-                        <h4>Baccalauréat STMG</h4>
-                        <h5>Lycée Rodin – Paris 13e</h5>
-                        <p class="text-muted" style="font-size: 0.9rem;">
-                            Spécialité Gestion Finance. <strong>Mention Bien</strong>.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="glass-card contact-cta reveal" id="contact">
-            <h2 style="font-size: 2rem; margin-bottom: 15px;">Prêt à collaborer ?</h2>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">
-                <i class="fas fa-map-marker-alt" style="color: var(--accent-cyan);"></i> Paris 13e, France &nbsp;&nbsp;|&nbsp;&nbsp; 
-                <i class="fas fa-phone" style="color: var(--accent-cyan);"></i> 07 66 28 13 16 <br><br>
-                <i class="fas fa-envelope" style="color: var(--accent-cyan);"></i> theochristmann101@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp;
-                <i class="fab fa-linkedin" style="color: var(--accent-cyan);"></i> https://www.linkedin.com/in/theo-christmann-7369063aa
+      <section class="articles-grid">
+        <div class="glass-card article-card reveal">
+          <img
+            src="./assets/img/cible.jpg"
+            alt="Illustration Profil"
+            class="article-img"
+          />
+          <div class="article-content">
+            <h3>Un profil atypique</h3>
+            <p>
+              Découvrez comment je connecte les bases du management, mes
+              expériences de terrain et mes soft skills.
             </p>
-            <div class="contact-buttons">
-                <a href="mailto:theochristmann101@gmail.com" class="btn-contact" style="margin-top: 0;">
-                    Me contacter par Email <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/theo-christmann-7369063aa" target="_blank" class="btn-contact btn-linkedin" style="margin-top: 0;">
-                    Mon profil LinkedIn <i class="fab fa-linkedin" style="margin-left: 10px;"></i>
-                </a>
-            </div>
-        </section>
+            <a href="profil.html" class="btn-more"
+              >Voir plus
+              <i class="fas fa-arrow-right" style="margin-left: 5px"></i
+            ></a>
+          </div>
+        </div>
 
+        <div class="glass-card article-card reveal">
+          <img
+            src="./assets/img/centre_aere.jpeg"
+            alt="Illustration Expériences"
+            class="article-img"
+          />
+          <div class="article-content">
+            <h3>Gérer l'imprévu</h3>
+            <p>
+              De l'animation BAFA à la gestion de groupe : ce que le terrain m'a
+              enseigné sur le travail en équipe.
+            </p>
+            <a href="experience.html" class="btn-more"
+              >Voir plus
+              <i class="fas fa-arrow-right" style="margin-left: 5px"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="glass-card article-card reveal">
+          <img
+            src="./assets/img/ia.jpg"
+            alt="Illustration Tech"
+            class="article-img"
+          />
+          <div class="article-content">
+            <h3>L'IA au service du concret</h3>
+            <p>
+              Prompt engineering, automatisation et comment j'allège les tâches
+              répétitives grâce à la tech.
+            </p>
+            <a href="tech.html" class="btn-more"
+              >Voir plus
+              <i class="fas fa-arrow-right" style="margin-left: 5px"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="glass-card article-card reveal">
+          <img
+            src="./assets/img/sport.jpeg"
+            alt="Illustration Sport"
+            class="article-img"
+          />
+          <div class="article-content">
+            <h3>Sport & Constance</h3>
+            <p>
+              Handball au PUC, musculation... Ce que le sport de compétition
+              m'apporte au quotidien.
+            </p>
+            <a href="sport.html" class="btn-more"
+              >Voir plus
+              <i class="fas fa-arrow-right" style="margin-left: 5px"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="glass-card article-card reveal">
+          <img
+            src="./assets/img/japon.jpg"
+            alt="Illustration Japon"
+            class="article-img"
+          />
+          <div class="article-content">
+            <h3>Culture Japonaise & Kaizen</h3>
+            <p>
+              Amélioration continue et rigueur : pourquoi la culture nippone
+              m'inspire professionnellement.
+            </p>
+            <a href="japon.html" class="btn-more"
+              >Voir plus
+              <i class="fas fa-arrow-right" style="margin-left: 5px"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="glass-card contact-cta reveal" id="contact">
+        <h2 style="font-size: 2rem; margin-bottom: 15px">
+          Prêt à collaborer ?
+        </h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px">
+          <i
+            class="fas fa-map-marker-alt"
+            style="color: var(--accent-cyan)"
+          ></i>
+          Paris 13e, France &nbsp;&nbsp;|&nbsp;&nbsp;
+          <i class="fas fa-phone" style="color: var(--accent-cyan)"></i> 07 66
+          28 13 16 <br /><br />
+          <i class="fas fa-envelope" style="color: var(--accent-cyan)"></i>
+          theochristmann101@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp;
+          <i class="fab fa-linkedin" style="color: var(--accent-cyan)"></i>
+          https://www.linkedin.com/in/theo-christmann-7369063aa
+        </p>
+        <div class="contact-buttons">
+          <a
+            href="mailto:theochristmann101@gmail.com"
+            class="btn-contact"
+            style="margin-top: 0"
+          >
+            Me contacter par Email
+            <i class="fas fa-arrow-right" style="margin-left: 10px"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/theo-christmann-7369063aa"
+            target="_blank"
+            class="btn-contact btn-linkedin"
+            style="margin-top: 0"
+          >
+            Mon profil LinkedIn
+            <i class="fab fa-linkedin" style="margin-left: 10px"></i>
+          </a>
+        </div>
+      </section>
     </div>
-    
-    <!-- FOOTER -->
+
     <footer>
-        <p>&copy; 2026 Théo Christmann – Portfolio.</p>
+      <p>&copy; 2026 Théo Christmann – Portfolio.</p>
     </footer>
 
-    <!-- JAVASCRIPT POUR L'INTERACTIVITÉ -->
     <script>
-        const glow = document.getElementById('cursor-glow');
-        
-        document.addEventListener('mousemove', (e) => {
-            requestAnimationFrame(() => {
-                glow.style.left = e.clientX + 'px';
-                glow.style.top = e.clientY + 'px';
-            });
+      const glow = document.getElementById("cursor-glow");
+
+      document.addEventListener("mousemove", (e) => {
+        requestAnimationFrame(() => {
+          glow.style.left = e.clientX + "px";
+          glow.style.top = e.clientY + "px";
         });
+      });
 
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 100;
 
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
         }
+      }
 
-        window.addEventListener("scroll", reveal);
-        reveal();
+      window.addEventListener("scroll", reveal);
+      reveal();
     </script>
-</body>
+  </body>
 </html>

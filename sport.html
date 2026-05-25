@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sport - Théo Christmann</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Effet de lueur -->
+    <div class="glow-bg"></div>
+    <div id="cursor-glow"></div>
+
+    <!-- Navigation simplifiée pour les pages articles -->
+    <nav>
+      <a href="index.html">Retour à l'accueil</a>
+    </nav>
+
+    <div class="article-container">
+      <a href="index.html" class="btn-back reveal active">
+        <i class="fas fa-arrow-left"></i> Retour au portfolio
+      </a>
+
+      <img
+        src="./assets/img/sport.jpeg"
+        alt="Sport et Constance"
+        class="article-hero-img reveal active"
+      />
+
+      <div class="glass-card article-content-card reveal active">
+        <h1><span class="gradient-text">Sport & Constance</span></h1>
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-running" style="margin-right: 10px"></i> Le Handball
+          : vision et collectif
+        </h3>
+        <p>
+          Je joue au handball au PUC (Paris Université Club) au poste de
+          demi-centre. C'est un poste charnière : je suis à la fois le lien
+          entre la défense et l'attaque, celui qui lance les actions, distribue
+          le jeu et prend des décisions vite.
+        </p>
+        <p>
+          Jouer demi-centre m'a appris à lire le jeu collectivement plutôt qu'à
+          attendre que les choses se fassent, un réflexe que je retrouve dans le
+          travail en équipe en dehors du terrain.
+        </p>
+
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.1);
+            margin: 30px 0;
+          "
+        />
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-trophy" style="margin-right: 10px"></i> Le sport de
+          haut niveau en observateur
+        </h3>
+        <p>
+          Le sport, je le vis aussi en spectateur passionné. Je suis de près
+          plusieurs disciplines : le handball, le football, le tennis, le MMA et
+          le rugby. Le PSG occupe une place particulière, je regarde tous leurs
+          matchs, sans exception.
+        </p>
+        <p>
+          Ce qui m'intéresse dans le sport à haut niveau, ce ne sont pas
+          uniquement les résultats : c'est ce qu'on peut observer derrière, la
+          gestion de la pression, les ajustements tactiques, le leadership dans
+          les moments décisifs.
+        </p>
+
+        <blockquote
+          style="
+            border-left: 4px solid var(--accent-purple);
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            background: rgba(124, 58, 237, 0.05);
+            border-radius: 0 15px 15px 0;
+            font-size: 1.1rem;
+            color: var(--text-main);
+          "
+        >
+          "Le sport a le pouvoir de changer le monde. Il a le pouvoir
+          d'inspirer, il a le pouvoir d'unir les gens comme peu d'autres choses.
+          Le sport peut faire naître l'espoir là où régnait le désespoir."<br />
+          <strong
+            style="
+              display: block;
+              margin-top: 10px;
+              font-size: 0.95rem;
+              color: var(--accent-purple);
+            "
+            >- Nelson Mandela</strong
+          >
+        </blockquote>
+
+        <p>
+          C'est une citation qui me parle vraiment. Les grands sportifs sont
+          pour moi une source d'inspiration, pas uniquement pour leurs
+          performances, mais pour ce qu'ils montrent : qu'on peut repousser ses
+          limites quand on s'y engage complètement.
+        </p>
+
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.1);
+            margin: 30px 0;
+          "
+        />
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-dumbbell" style="margin-right: 10px"></i> La
+          Musculation : l'école de la patience
+        </h3>
+        <p>
+          La musculation complète tout ça. Je m'entraîne régulièrement dans un
+          objectif d'amélioration des performances, mais ça structure aussi mes
+          journées et me force à être constant.
+        </p>
+        <p>
+          C'est le genre d'effort qui ne se voit pas à court terme, et c'est
+          justement ce qui m'a appris la patience.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Théo Christmann – Portfolio.</p>
+    </footer>
+
+    <script>
+      const glow = document.getElementById("cursor-glow");
+
+      document.addEventListener("mousemove", (e) => {
+        requestAnimationFrame(() => {
+          glow.style.left = e.clientX + "px";
+          glow.style.top = e.clientY + "px";
+        });
+      });
+
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 50;
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+
+      window.addEventListener("scroll", reveal);
+      reveal();
+    </script>
+  </body>
+</html>

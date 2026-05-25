@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Culture Japonaise - Théo Christmann</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Effet de lueur -->
+    <div class="glow-bg"></div>
+    <div id="cursor-glow"></div>
+
+    <!-- Navigation simplifiée pour les pages articles -->
+    <nav>
+      <a href="index.html">Retour à l'accueil</a>
+    </nav>
+
+    <div class="article-container">
+      <a href="index.html" class="btn-back reveal active">
+        <i class="fas fa-arrow-left"></i> Retour au portfolio
+      </a>
+
+      <img
+        src="./assets/img/japon.jpg"
+        alt="Culture Japonaise et Kaizen"
+        class="article-hero-img reveal active"
+      />
+
+      <div class="glass-card article-content-card reveal active">
+        <h1><span class="gradient-text">Culture Japonaise & Kaizen</span></h1>
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-torii-gate" style="margin-right: 10px"></i> Rigueur
+          et créativité
+        </h3>
+        <p>
+          Le Japon m'intéresse depuis plusieurs années, et plus j'en apprends,
+          plus je comprends pourquoi cette culture fascine autant.
+        </p>
+        <p>
+          Ce qui me touche particulièrement, c'est la coexistence entre deux
+          choses qu'on opposerait instinctivement : une rigueur et une
+          discipline extrêmes d'un côté, et une créativité débordante de
+          l'autre.
+        </p>
+
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.1);
+            margin: 30px 0;
+          "
+        />
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-chart-line" style="margin-right: 10px"></i> La
+          philosophie du Kaizen
+        </h3>
+        <p>
+          Le concept de <strong>kaizen</strong>, l'amélioration continue par
+          petits pas, est quelque chose que j'essaie d'intégrer dans ma façon de
+          travailler.
+        </p>
+        <p>
+          C'est une approche qui prouve que les grands résultats ne viennent pas
+          toujours de bouleversements soudains, mais d'un engagement constant à
+          faire un peu mieux chaque jour.
+        </p>
+
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.1);
+            margin: 30px 0;
+          "
+        />
+
+        <h3
+          style="
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-weight: 800;
+          "
+        >
+          <i class="fas fa-seedling" style="margin-right: 10px"></i> Un écho à
+          mes valeurs professionnelles
+        </h3>
+        <p>
+          Je m'intéresse à la culture japonaise au sens large : la gastronomie,
+          l'architecture, les arts martiaux, l'animation, la philosophie du
+          travail.
+        </p>
+        <p>
+          C'est une culture qui valorise l'effort discret, la précision et le
+          respect du collectif. Ce sont des valeurs qui résonnent avec ce que
+          j'essaie de construire professionnellement et personnellement.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Théo Christmann – Portfolio.</p>
+    </footer>
+
+    <script>
+      const glow = document.getElementById("cursor-glow");
+
+      document.addEventListener("mousemove", (e) => {
+        requestAnimationFrame(() => {
+          glow.style.left = e.clientX + "px";
+          glow.style.top = e.clientY + "px";
+        });
+      });
+
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 50;
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+
+      window.addEventListener("scroll", reveal);
+      reveal();
+    </script>
+  </body>
+</html>
